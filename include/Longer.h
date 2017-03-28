@@ -5,12 +5,34 @@
 
 class Longer
 {
+    static const int max1d=(uint8_t)-1;
+    static const int bit1d=8;
+    size_t datasize;
+    uint8_t *data;
     public:
+
+        void reserve(size_t);
+        size_t size();
+        size_t length();
+        void delnulls();
+        void null();
+
         Longer();
+        template<class T>Longer(T a):
+            datasize(0){
+            T c(a);
+            size_t nsize=1;
+            if(!a)nsize=0;
+            while(c>>=bit1d)++nsize;
+            reserve(nsize);
+            for(size_t i=0;i<nsize;++i){
+                data[i]=a%(max1d+1);
+                a-=data[i];
+                a>>=bit1d;
+            }
+        }
         virtual ~Longer();
         Longer(const Longer&);
-        template<class T>
-        Longer(T a);
         //math
         virtual Longer  operator +  (const Longer&);
         virtual Longer  operator -  (const Longer&);
