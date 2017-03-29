@@ -8,7 +8,16 @@ std::string Longer::readbytes(){
     }
     return ret;
 }
-std::string Longer::read(size_t){
+std::string Longer::read(size_t base){
+    //TODO: requires: % toull() -= /=
+    std::string ret="";
+    Longer copy(*this);
+    while(length()){
+        ret+=itoc[(copy%base).toull()];
+        copy-=copy%base;
+        copy/=base;
+    }
+    return std::string(ret.rbegin(),ret.rend());
 }
 void Longer::writebytes(std::string s){
     if(s.length()&1)s=std::string("0")+s;
