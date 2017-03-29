@@ -91,6 +91,8 @@ class Longer
         void writebytes(std::string);
         void write(std::string, size_t=10);
 
+        unsigned long long toull();
+
         Longer();
         template<class T>Longer(T a):
             datasize(0){

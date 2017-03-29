@@ -21,7 +21,15 @@ void Longer::writebytes(std::string s){
 void Longer::write(std::string, size_t){
 }
 
-
+unsigned long long Longer::toull(){
+    unsigned long long ret=0;
+    size_t l=(sizeof(unsigned long long)<length())?sizeof(unsigned long long):length();
+    for(size_t i=0;i<l;++i){
+        ret<<=bit1d;
+        ret+=data[i];
+    }
+    return ret;
+}
 
 
 void Longer::reserve(size_t ile){
