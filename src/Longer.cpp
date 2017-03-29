@@ -15,7 +15,7 @@ void Longer::writebytes(std::string s){
     null();
     reserve(s.length()>>1);
     size_t last=s.length()-1;
-    for(size_t i=0;i<datasize;++i)data[i]=(ctoi[s.at(last-i*2-1)]<<4)+(ctoi[s.at(last-i*2)]);
+    for(size_t i=0;i<datasize;++i)data[i]=(ctoi[(size_t)s.at(last-i*2-1)]<<4)+(ctoi[(size_t)s.at(last-i*2)]);
 
 }
 void Longer::write(std::string, size_t){
