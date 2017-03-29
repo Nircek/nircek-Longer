@@ -6,13 +6,16 @@ using namespace std;
 int main()
 {
     try{
-    Longer a(0xF);
-    a.reserve(0xFFF);
-    a.delnulls();
-    cout<<a.size();
+        string a;
+        cin>>a;
+        Longer b;
+        b.writebytes(a);
+        cout<<b.readbytes();
     return 0;
     }catch(string err){
         cout<<"\n\n!!!ERR: "<<err;
+    }catch(std::exception& e) {
+        cout<<"\n\n!!!ERR: "<<e.what();
     }catch(...){
         cout<<"\n\n!!!ERR: UNEXCEPTED ERROR";
     }

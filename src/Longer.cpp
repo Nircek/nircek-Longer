@@ -1,4 +1,29 @@
 #include "Longer.h"
+
+std::string Longer::readbytes(){
+    std::string ret="";
+    for(size_t i=datasize;i;--i){
+        ret+=itoc[(data[i-1]>>4)&0xF];
+        ret+=itoc[data[i-1]&0xF];
+    }
+    return ret;
+}
+std::string Longer::read(size_t){
+}
+void Longer::writebytes(std::string s){
+    if(s.length()&1)s=std::string("0")+s;
+    null();
+    reserve(s.length()>>1);
+    size_t last=s.length()-1;
+    for(size_t i=0;i<datasize;++i)data[i]=(ctoi[s.at(last-i*2-1)]<<4)+(ctoi[s.at(last-i*2)]);
+
+}
+void Longer::write(std::string, size_t){
+}
+
+
+
+
 void Longer::reserve(size_t ile){
     size_t slength=length();
     if(slength>ile)throw std::string("Possible loss of data");
