@@ -81,17 +81,17 @@ class Longer
     uint8_t *data;
     public:
         void reserve(size_t);
-        size_t size();
-        size_t length();
+        size_t size() const;
+        size_t length() const;
         void delnulls();
         void null();
 
-        std::string readbytes();
-        std::string read(size_t=10);
+        std::string readbytes() const;
+        std::string read(size_t=10) const;
         void writebytes(std::string);
         void write(std::string, size_t=10);
 
-        unsigned long long toull();
+        unsigned long long toull() const;
 
         Longer();
         template<class T>Longer(T a):
@@ -110,11 +110,11 @@ class Longer
         virtual ~Longer();
         Longer(const Longer&);
         //math
-        virtual Longer  operator +  (const Longer&);
-        virtual Longer  operator -  (const Longer&);
-        virtual Longer  operator *  (const Longer&);
-        virtual Longer  operator /  (const Longer&);
-        virtual Longer  operator %  (const Longer&);
+        virtual Longer  operator +  (const Longer&) const;
+        virtual Longer  operator -  (const Longer&) const;
+        virtual Longer  operator *  (const Longer&) const;
+        virtual Longer  operator /  (const Longer&) const;
+        virtual Longer  operator %  (const Longer&) const;
 
         //math returning this
         virtual Longer& operator += (const Longer&);
@@ -126,12 +126,12 @@ class Longer
         virtual Longer& operator -- ();
 
         //bit
-        virtual Longer  operator ^  (const Longer&);
-        virtual Longer  operator &  (const Longer&);
-        virtual Longer  operator |  (const Longer&);
-        virtual Longer  operator ~  ();
-        virtual Longer  operator << (const Longer&);
-        virtual Longer  operator >> (const Longer&);
+        virtual Longer  operator ^  (const Longer&) const;
+        virtual Longer  operator &  (const Longer&) const;
+        virtual Longer  operator |  (const Longer&) const;
+        virtual Longer  operator ~  () const;
+        virtual Longer  operator << (const Longer&) const;
+        virtual Longer  operator >> (const Longer&) const;
 
         //bit returning this
         virtual Longer& operator ^= (const Longer&);
@@ -141,15 +141,15 @@ class Longer
         virtual Longer& operator >>=(const Longer&);
 
         //bool
-        virtual bool    operator !  ();
-        virtual bool    operator <  (const Longer&);
-        virtual bool    operator >  (const Longer&);
-        virtual bool    operator == (const Longer&);
-        virtual bool    operator != (const Longer&);
-        virtual bool    operator <= (const Longer&);
-        virtual bool    operator >= (const Longer&);
-        virtual bool    operator && (const Longer&);
-        virtual bool    operator || (const Longer&);
+        virtual bool    operator !  () const;
+        virtual bool    operator <  (const Longer&) const;
+        virtual bool    operator >  (const Longer&) const;
+        virtual bool    operator == (const Longer&) const;
+        virtual bool    operator != (const Longer&) const;
+        virtual bool    operator <= (const Longer&) const;
+        virtual bool    operator >= (const Longer&) const;
+        virtual bool    operator && (const Longer&) const;
+        virtual bool    operator || (const Longer&) const;
 
 
         /**//**//**//**//**//**//**//**//**/
@@ -158,15 +158,15 @@ class Longer
 		/********************************************/
 		//math
 		template <class T>
-		Longer  operator +  (const T& a){return operator+(Longer(a));}
+		Longer  operator +  (const T& a) const{return operator+(Longer(a));}
 		template <class T>
-		Longer  operator -  (const T& a){return operator-(Longer(a));}
+		Longer  operator -  (const T& a) const{return operator-(Longer(a));}
 		template <class T>
-		Longer  operator *  (const T& a){return operator*(Longer(a));}
+		Longer  operator *  (const T& a) const{return operator*(Longer(a));}
 		template <class T>
-		Longer  operator /  (const T& a){return operator/(Longer(a));}
+		Longer  operator /  (const T& a) const{return operator/(Longer(a));}
 		template <class T>
-		Longer  operator %  (const T& a){return operator%(Longer(a));}
+		Longer  operator %  (const T& a) const{return operator%(Longer(a));}
 
 		//math returning this
 		template <class T>
@@ -182,15 +182,15 @@ class Longer
 
 		//bit
 		template <class T>
-		Longer  operator ^  (const T& a){return operator^(Longer(a));}
+		Longer  operator ^  (const T& a) const{return operator^(Longer(a));}
 		template <class T>
-		Longer  operator &  (const T& a){return operator&(Longer(a));}
+		Longer  operator &  (const T& a) const{return operator&(Longer(a));}
 		template <class T>
-		Longer  operator |  (const T& a){return operator|(Longer(a));}
+		Longer  operator |  (const T& a) const{return operator|(Longer(a));}
 		template <class T>
-		Longer  operator << (const T& a){return operator<<(Longer(a));}
+		Longer  operator << (const T& a) const{return operator<<(Longer(a));}
 		template <class T>
-		Longer  operator >> (const T& a){return operator>>(Longer(a));}
+		Longer  operator >> (const T& a) const{return operator>>(Longer(a));}
 
 		//bit returning this
 		template <class T>
@@ -206,21 +206,21 @@ class Longer
 
 		//bool
 		template <class T>
-		bool    operator <  (const T& a){return operator<(Longer(a));}
+		bool    operator <  (const T& a) const{return operator<(Longer(a));}
 		template <class T>
-		bool    operator >  (const T& a){return operator>(Longer(a));}
+		bool    operator >  (const T& a) const{return operator>(Longer(a));}
 		template <class T>
-		bool    operator == (const T& a){return operator==(Longer(a));}
+		bool    operator == (const T& a) const{return operator==(Longer(a));}
 		template <class T>
-		bool    operator != (const T& a){return operator!=(Longer(a));}
+		bool    operator != (const T& a) const{return operator!=(Longer(a));}
 		template <class T>
-		bool    operator <= (const T& a){return operator<=(Longer(a));}
+		bool    operator <= (const T& a) const{return operator<=(Longer(a));}
 		template <class T>
-		bool    operator >= (const T& a){return operator>=(Longer(a));}
+		bool    operator >= (const T& a) const{return operator>=(Longer(a));}
 		template <class T>
-		bool    operator && (const T& a){return operator&&(Longer(a));}
+		bool    operator && (const T& a) const{return operator&&(Longer(a));}
 		template <class T>
-		bool    operator || (const T& a){return operator||(Longer(a));}
+		bool    operator || (const T& a) const{return operator||(Longer(a));}
 
 
 		/**//**//**//**//**//**//**//**//**/

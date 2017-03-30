@@ -1,6 +1,6 @@
 #include "Longer.h"
 
-std::string Longer::readbytes(){
+std::string Longer::readbytes() const{
     std::string ret="";
     for(size_t i=datasize;i;--i){
         ret+=itoc[(data[i-1]>>4)&0xF];
@@ -8,7 +8,7 @@ std::string Longer::readbytes(){
     }
     return ret;
 }
-std::string Longer::read(size_t base){
+std::string Longer::read(size_t base) const{
     //TODO: requires: % toull() -= /=
     std::string ret="";
     Longer copy(*this);
@@ -30,7 +30,7 @@ void Longer::writebytes(std::string s){
 void Longer::write(std::string, size_t){
 }
 
-unsigned long long Longer::toull(){
+unsigned long long Longer::toull() const{
     unsigned long long ret=0;
     size_t l=(sizeof(unsigned long long)<length())?sizeof(unsigned long long):length();
     for(size_t i=0;i<l;++i){
@@ -49,10 +49,10 @@ void Longer::reserve(size_t ile){
     datasize=ile;
     data=copy;
 }
-size_t Longer::size(){
+size_t Longer::size() const{
     return datasize;
 }
-size_t Longer::length(){
+size_t Longer::length() const{
     if(!datasize)return 0;
     size_t i=datasize;
     while(i)if(data[--i]!=0x00)break;
@@ -77,23 +77,23 @@ Longer::Longer(const Longer& other):datasize(0){operator=(other);}
 
 /******************************************************************/
 //                           MATH
-Longer  Longer::operator +  (const Longer& a){
 	throw std::string("This function is unavailable!");
 	return *((Longer*)(NULL));
 }
-Longer  Longer::operator -  (const Longer& a){
+Longer  Longer::operator +  (const Longer& a) const{
+Longer  Longer::operator -  (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((Longer*)(NULL));
 }
-Longer  Longer::operator *  (const Longer& a){
+Longer  Longer::operator *  (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((Longer*)(NULL));
 }
-Longer  Longer::operator /  (const Longer& a){
+Longer  Longer::operator /  (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((Longer*)(NULL));
 }
-Longer  Longer::operator %  (const Longer& a){
+Longer  Longer::operator %  (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((Longer*)(NULL));
 }
@@ -133,27 +133,27 @@ Longer& Longer::operator -- (){
 
 /******************************************************************/
 //                           BIT
-Longer  Longer::operator ^  (const Longer& a){
+Longer  Longer::operator ^  (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((Longer*)(NULL));
 }
-Longer  Longer::operator &  (const Longer& a){
+Longer  Longer::operator &  (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((Longer*)(NULL));
 }
-Longer  Longer::operator |  (const Longer& a){
+Longer  Longer::operator |  (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((Longer*)(NULL));
 }
-Longer  Longer::operator ~  (){
+Longer  Longer::operator ~  () const{
 	throw std::string("This function is unavailable!");
 	return *((Longer*)(NULL));
 }
-Longer  Longer::operator << (const Longer& a){
+Longer  Longer::operator << (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((Longer*)(NULL));
 }
-Longer  Longer::operator >> (const Longer& a){
+Longer  Longer::operator >> (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((Longer*)(NULL));
 }
@@ -185,39 +185,39 @@ Longer& Longer::operator >>=(const Longer& a){
 
 /******************************************************************/
 //                           BOOL
-bool    Longer::operator !  (){
+bool    Longer::operator !  () const{
 	throw std::string("This function is unavailable!");
 	return *((bool*)(NULL));
 }
-bool    Longer::operator <  (const Longer& a){
+bool    Longer::operator <  (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((bool*)(NULL));
 }
-bool    Longer::operator >  (const Longer& a){
+bool    Longer::operator >  (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((bool*)(NULL));
 }
-bool    Longer::operator == (const Longer& a){
+bool    Longer::operator == (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((bool*)(NULL));
 }
-bool    Longer::operator != (const Longer& a){
+bool    Longer::operator != (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((bool*)(NULL));
 }
-bool    Longer::operator <= (const Longer& a){
+bool    Longer::operator <= (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((bool*)(NULL));
 }
-bool    Longer::operator >= (const Longer& a){
+bool    Longer::operator >= (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((bool*)(NULL));
 }
-bool    Longer::operator && (const Longer& a){
+bool    Longer::operator && (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((bool*)(NULL));
 }
-bool    Longer::operator || (const Longer& a){
+bool    Longer::operator || (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((bool*)(NULL));
 }
