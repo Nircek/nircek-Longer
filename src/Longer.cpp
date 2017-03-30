@@ -66,6 +66,10 @@ void Longer::null(){
     datasize=0;
 }
 
+uint8_t Longer::at(size_t a) const{
+    return (a<datasize)?data[a]:0;
+}
+
 
 Longer::Longer():datasize(0){}
 

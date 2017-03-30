@@ -92,6 +92,7 @@ class Longer
         void write(std::string, size_t=10);
 
         unsigned long long toull() const;
+        uint8_t at(size_t) const;
 
         Longer();
         template<class T>Longer(T a):
