@@ -81,10 +81,24 @@ Longer::Longer(const Longer& other):datasize(0){operator=(other);}
 
 /******************************************************************/
 //                           MATH
-	throw std::string("This function is unavailable!");
-	return *((Longer*)(NULL));
-}
 Longer  Longer::operator +  (const Longer& a) const{
+	Longer ret;
+
+	size_t l=(this->datasize>a.datasize)?this->datasize:a.datasize;
+	ret.reserve(l);
+	uint16_t step=0;
+	for(size_t i=0;i<l;++i){
+        step+=at(i);
+        step+=a.at(i);
+        ret.data[i]=step&max1d;
+        step>>=bit1d;
+	}
+	if(step){
+        ret.reserve(ret.datasize+1);
+        ret.data[ret.datasize-1]=step;
+	}
+	return ret;
+}
 Longer  Longer::operator -  (const Longer& a) const{
 	throw std::string("This function is unavailable!");
 	return *((Longer*)(NULL));

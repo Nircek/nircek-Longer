@@ -8,9 +8,12 @@ int main()
     try{
         string a;
         cin>>a;
-        Longer b;
+        Longer b,c,d;
         b.writebytes(a);
-        cout<<b.readbytes();
+        cin>>a;
+        c.writebytes(a);
+        d=b+c;
+        cout<<d.readbytes();
     return 0;
     }catch(string err){
         cout<<"\n\n!!!ERR: "<<err;
