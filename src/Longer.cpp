@@ -55,8 +55,8 @@ size_t Longer::size() const{
 size_t Longer::length() const{
     if(!datasize)return 0;
     size_t i=datasize;
-    while(i)if(data[--i]!=0x00)break;
-    return i+1;
+    while(i)if(data[--i]!=0x00)return i+1;
+    return 0;
 }
 void Longer::delnulls(){
     reserve(length());
@@ -204,32 +204,33 @@ Longer& Longer::operator >>=(const Longer& a){
 /******************************************************************/
 //                           BOOL
 bool    Longer::operator !  () const{
-	throw std::string("This function is unavailable!");
-	return *((bool*)(NULL));
+	return !length();
 }
 bool    Longer::operator <  (const Longer& a) const{
-	throw std::string("This function is unavailable!");
-	return *((bool*)(NULL));
+	if(length()<a.length())return true;
+	if(length()>a.length())return false;
+	for(size_t i=length();i;--i){if(at(i-1)<a.at(i-1))return true;else if(at(i-1)>a.at(i-1))return false;}
+	return false;
 }
 bool    Longer::operator >  (const Longer& a) const{
-	throw std::string("This function is unavailable!");
-	return *((bool*)(NULL));
+	if(length()>a.length())return true;
+	if(length()<a.length())return false;
+	for(size_t i=length();i;--i){if(at(i-1)>a.at(i-1))return true;else if(at(i-1)<a.at(i-1))return false;}
+	return false;
 }
 bool    Longer::operator == (const Longer& a) const{
-	throw std::string("This function is unavailable!");
-	return *((bool*)(NULL));
+	if(length()!=a.length())return false;
+	for(size_t i=0;i<length();++i)if(at(i)!=a.at(i))return false;
+	return true;
 }
 bool    Longer::operator != (const Longer& a) const{
-	throw std::string("This function is unavailable!");
-	return *((bool*)(NULL));
+	return !((*this)==a);
 }
 bool    Longer::operator <= (const Longer& a) const{
-	throw std::string("This function is unavailable!");
-	return *((bool*)(NULL));
+	return !((*this)>a);
 }
 bool    Longer::operator >= (const Longer& a) const{
-	throw std::string("This function is unavailable!");
-	return *((bool*)(NULL));
+	return !((*this)<a);
 }
 bool    Longer::operator && (const Longer& a) const{
 	throw std::string("This function is unavailable!");

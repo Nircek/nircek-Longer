@@ -8,12 +8,19 @@ int main()
     try{
         string a;
         cin>>a;
-        Longer b,c,d;
+        Longer b,c;
         b.writebytes(a);
         cin>>a;
         c.writebytes(a);
-        d=b+c;
-        cout<<d.readbytes();
+        cout<<b.readbytes()<<"=="<<c.readbytes()<<'='<<(b==c?"true":"false")<<'\n';
+        cout<<b.readbytes()<<"!="<<c.readbytes()<<'='<<(b!=c?"true":"false")<<'\n';
+        cout<<b.readbytes()<<"<"<<c.readbytes()<<'='<<(b<c?"true":"false")<<'\n';
+        cout<<b.readbytes()<<">"<<c.readbytes()<<'='<<(b>c?"true":"false")<<'\n';
+        cout<<b.readbytes()<<"<="<<c.readbytes()<<'='<<(b<=c?"true":"false")<<'\n';
+        cout<<b.readbytes()<<">="<<c.readbytes()<<'='<<(b>=c?"true":"false")<<'\n';
+        cout<<"isEmpty("<<b.readbytes()<<")="<<((!b)?"true":"false")<<'\n';
+        cout<<"isEmpty("<<c.readbytes()<<")="<<((!c)?"true":"false");
+        ;
     return 0;
     }catch(string err){
         cout<<"\n\n!!!ERR: "<<err;
