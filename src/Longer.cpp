@@ -152,20 +152,28 @@ Longer& Longer::operator -- (){
 /******************************************************************/
 //                           BIT
 Longer  Longer::operator ^  (const Longer& a) const{
-	throw std::string("This function is unavailable!");
-	return *((Longer*)(NULL));
+	Longer ret;
+	ret.reserve(std::max(length(),a.length()));
+	for(size_t i=0;i<ret.size();++i)ret.data[i]=at(i)^a.at(i);
+	return ret;
 }
 Longer  Longer::operator &  (const Longer& a) const{
-	throw std::string("This function is unavailable!");
-	return *((Longer*)(NULL));
+	Longer ret;
+	ret.reserve(std::min(length(),a.length()));
+	for(size_t i=0;i<ret.size();++i)ret.data[i]=at(i)&a.at(i);
+	return ret;
 }
 Longer  Longer::operator |  (const Longer& a) const{
-	throw std::string("This function is unavailable!");
-	return *((Longer*)(NULL));
+    Longer ret;
+	ret.reserve(std::max(length(),a.length()));
+	for(size_t i=0;i<ret.size();++i)ret.data[i]=at(i)|a.at(i);
+	return ret;
 }
 Longer  Longer::operator ~  () const{
-	throw std::string("This function is unavailable!");
-	return *((Longer*)(NULL));
+	Longer ret;
+	ret.reserve(length());
+	for(size_t i=0;i<ret.size();++i)ret.data[i]=~at(i);
+	return ret;
 }
 Longer  Longer::operator << (const Longer& a) const{
 	throw std::string("This function is unavailable!");

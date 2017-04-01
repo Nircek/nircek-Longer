@@ -19,7 +19,8 @@ int main()
         cout<<b.readbytes()<<"<="<<c.readbytes()<<'='<<(b<=c?"true":"false")<<'\n';
         cout<<b.readbytes()<<">="<<c.readbytes()<<'='<<(b>=c?"true":"false")<<'\n';
         cout<<"isEmpty("<<b.readbytes()<<")="<<((!b)?"true":"false")<<'\n';
-        cout<<"isEmpty("<<c.readbytes()<<")="<<((!c)?"true":"false");
+        cout<<"isEmpty("<<c.readbytes()<<")="<<((!c)?"true":"false")<<'\n';
+        cout<<b.readbytes()<<'^'<<c.readbytes()<<'='<<(b^c).readbytes()<<'\n';
         ;
     return 0;
     }catch(string err){
