@@ -19,6 +19,17 @@ std::string Longer::read(size_t base) const{
     }
     return std::string(ret.rbegin(),ret.rend());
 }
+void Longer::setdata(size_t s,uint8_t d){
+    if(s>=datasize)reserve(s);
+    data[s]=d;
+}
+
+void Longer::setpart(size_t s,uint16_t &d){
+    if(s>=datasize)reserve(s);
+    data[s]=d&max1d;
+    d>>=bit1d;
+}
+
 void Longer::writebytes(std::string s){
     if(s.length()&1)s=std::string("0")+s;
     null();
@@ -90,13 +101,9 @@ Longer  Longer::operator +  (const Longer& a) const{
 	for(size_t i=0;i<l;++i){
         step+=at(i);
         step+=a.at(i);
-        ret.data[i]=step&max1d;
-        step>>=bit1d;
+        ret.setpart(i,step);
 	}
-	if(step){
-        ret.reserve(ret.datasize+1);
-        ret.data[ret.datasize-1]=step;
-	}
+	while(step)ret.setpart(ret.size(),step);
 	return ret;
 }
 Longer  Longer::operator -  (const Longer& a) const{

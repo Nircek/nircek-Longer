@@ -85,6 +85,8 @@ class Longer
         size_t length() const;
         void delnulls();
         void null();
+        void setdata(size_t,uint8_t);
+        void setpart(size_t,uint16_t&);
 
         std::string readbytes() const;
         std::string read(size_t=10) const;
