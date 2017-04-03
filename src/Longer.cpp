@@ -188,16 +188,19 @@ Longer  Longer::operator >> (const Longer& a) const{
 /******************************************************************/
 //                          =BIT
 Longer& Longer::operator ^= (const Longer& a){
-	throw std::string("This function is unavailable!");
-	return *((Longer*)(NULL));
+	reserve(std::max(length(),a.length()));
+	for(size_t i=0;i<size();++i)data[i]^=a.at(i);
+	return *this;
 }
 Longer& Longer::operator &= (const Longer& a){
-	throw std::string("This function is unavailable!");
-	return *((Longer*)(NULL));
+	reserve(std::min(length(),a.length()));
+	for(size_t i=0;i<size();++i)data[i]&=a.at(i);
+	return *this;
 }
 Longer& Longer::operator |= (const Longer& a){
-	throw std::string("This function is unavailable!");
-	return *((Longer*)(NULL));
+	reserve(std::max(length(),a.length()));
+	for(size_t i=0;i<size();++i)data[i]|=a.at(i);
+	return *this;
 }
 Longer& Longer::operator <<=(const Longer& a){
 	throw std::string("This function is unavailable!");
