@@ -21,8 +21,8 @@ int main()
         cout<<"isEmpty("<<b.readbytes()<<")="<<((!b)?"true":"false")<<'\n';
         cout<<"isEmpty("<<c.readbytes()<<")="<<((!c)?"true":"false")<<'\n';
         cout<<b.readbytes()<<'^'<<c.readbytes()<<'='<<(b^c).readbytes()<<'\n';
-        ;
-    return 0;
+        for(Longer i;i<c;++i)cout<<"0x"<<i.readbytes()<<' ';
+        return 0;
     }catch(string err){
         cout<<"\n\n!!!ERR: "<<err;
     }catch(std::exception& e) {

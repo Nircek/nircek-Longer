@@ -79,6 +79,7 @@ class Longer
     static const int bit1d=8;
     size_t datasize;
     uint8_t *data;
+    uint8_t& getdata(size_t);
     public:
         void reserve(size_t);
         size_t size() const;

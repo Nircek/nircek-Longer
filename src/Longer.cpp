@@ -19,13 +19,17 @@ std::string Longer::read(size_t base) const{
     }
     return std::string(ret.rbegin(),ret.rend());
 }
+uint8_t& Longer::getdata(size_t s){
+    if(s>=datasize)reserve(s+1);
+    return data[s];
+}
 void Longer::setdata(size_t s,uint8_t d){
-    if(s>=datasize)reserve(s);
+    if(s>=datasize)reserve(s+1);
     data[s]=d;
 }
 
 void Longer::setpart(size_t s,uint16_t &d){
-    if(s>=datasize)reserve(s);
+    if(s>=datasize)reserve(s+1);
     data[s]=d&max1d;
     d>>=bit1d;
 }
@@ -147,8 +151,9 @@ Longer& Longer::operator %= (const Longer& a){
 	return *((Longer*)(NULL));
 }
 Longer& Longer::operator ++ (){
-	throw std::string("This function is unavailable!");
-	return *((Longer*)(NULL));
+    size_t i=(size_t)-1;
+	while(!(++getdata(++i)));
+	return *this;
 }
 Longer& Longer::operator -- (){
 	throw std::string("This function is unavailable!");
